@@ -56,15 +56,21 @@ class MusicLibraryController
           alpha_songs.each.with_index(1) do |song, index|
             puts "#{index}. #{song.name} - #{song.genre.name}"
           end
-          #binding.pry
         end
-
-
       end
+    end
 
-
-      #each.with_index(1) do |song, index|
-
-
+    def list_songs_by_genre
+      response = nil
+      until response != nil
+        puts "Please enter the name of a genre:"
+        response = gets.chomp
+        if Genre.all.detect {|genre| genre.name == response}
+          alpha_genres = Genre.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
+          alpha_songs.each.with_index(1) do |song, index|
+            puts "#{index}. #{song.name} - #{song.genre.name}"
+          end
+        end
+      end
     end
 end
