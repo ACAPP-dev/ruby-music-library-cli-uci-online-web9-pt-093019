@@ -80,10 +80,7 @@ class MusicLibraryController
       response = gets.chomp
       if Songs.all.detect {|song| song.name == response}
 
-        end
       end
     end
-
-
   end
 end
