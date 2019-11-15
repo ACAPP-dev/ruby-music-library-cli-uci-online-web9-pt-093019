@@ -22,6 +22,7 @@ class MusicLibraryController
       puts "What would you like to do?"
       response = gets.chomp.strip
     end
+  end
 
     def list_songs
       #binding.pry
@@ -38,5 +39,10 @@ class MusicLibraryController
       end
     end
 
-  end
+    def list_genres
+      alpha_genres = Genre.all.sort {|genre1, genre2| genre1.name <=> genre2.name}
+      alpha_genres.each.with_index(1) do |genre, index|
+        puts "#{index}. #{genre.name}"
+      end
+    end
 end
