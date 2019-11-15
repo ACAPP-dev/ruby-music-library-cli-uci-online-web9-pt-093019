@@ -48,7 +48,7 @@ class MusicLibraryController
 
     def list_songs_by_artist
       response = " "
-      until reponse != " "
+      until response != " "
         puts "Please enter the name of an artist:"
         response = gets.chomp
       end
