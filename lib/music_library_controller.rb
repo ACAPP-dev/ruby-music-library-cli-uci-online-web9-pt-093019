@@ -31,5 +31,12 @@ class MusicLibraryController
       end
     end
 
+    def list_artists
+      alpha_artists = Artist.all.sort {|artist1, artist2| artist1.name <=> artist2.name}
+      alpha_artists.each.with_index(1) do |artist, index|
+        puts "#{index}. #{artist.name}"
+      end
+    end
+
   end
 end
