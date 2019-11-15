@@ -24,53 +24,52 @@ class MusicLibraryController
     end
   end
 
-    def list_songs
-      #binding.pry
-      alpha_songs = Song.all.sort {|song1, song2| song1.name <=> song2.name}
-      alpha_songs.each.with_index(1) do |song, index|
-        puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
-      end
+  def list_songs
+    alpha_songs = Song.all.sort {|song1, song2| song1.name <=> song2.name}
+    alpha_songs.each.with_index(1) do |song, index|
+      puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
+  end
 
-    def list_artists
-      alpha_artists = Artist.all.sort {|artist1, artist2| artist1.name <=> artist2.name}
-      alpha_artists.each.with_index(1) do |artist, index|
-        puts "#{index}. #{artist.name}"
-      end
+  def list_artists
+    alpha_artists = Artist.all.sort {|artist1, artist2| artist1.name <=> artist2.name}
+    alpha_artists.each.with_index(1) do |artist, index|
+      puts "#{index}. #{artist.name}"
     end
+  end
 
-    def list_genres
-      alpha_genres = Genre.all.sort {|genre1, genre2| genre1.name <=> genre2.name}
-      alpha_genres.each.with_index(1) do |genre, index|
-        puts "#{index}. #{genre.name}"
-      end
+  def list_genres
+    alpha_genres = Genre.all.sort {|genre1, genre2| genre1.name <=> genre2.name}
+    alpha_genres.each.with_index(1) do |genre, index|
+      puts "#{index}. #{genre.name}"
     end
+  end
 
-    def list_songs_by_artist
-      response = nil
-      until response != nil
-        puts "Please enter the name of an artist:"
-        response = gets.chomp
-        if Artist.all.detect {|artist| artist.name == response}
-          alpha_songs = Artist.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
-          alpha_songs.each.with_index(1) do |song, index|
-            puts "#{index}. #{song.name} - #{song.genre.name}"
-          end
+  def list_songs_by_artist
+    response = nil
+    until response != nil
+      puts "Please enter the name of an artist:"
+      response = gets.chomp
+      if Artist.all.detect {|artist| artist.name == response}
+        alpha_songs = Artist.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
+        alpha_songs.each.with_index(1) do |song, index|
+          puts "#{index}. #{song.name} - #{song.genre.name}"
         end
       end
     end
+  end
 
-    def list_songs_by_genre
-      response = nil
-      until response != nil
-        puts "Please enter the name of a genre:"
-        response = gets.chomp
-        if Genre.all.detect {|genre| genre.name == response}
-          alpha_genres = Genre.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
-          alpha_genres.each.with_index(1) do |song, index|
-            puts "#{index}. #{song.artist.name} - #{song.name}"
-          end
+  def list_songs_by_genre
+    response = nil
+    until response != nil
+      puts "Please enter the name of a genre:"
+      response = gets.chomp
+      if Genre.all.detect {|genre| genre.name == response}
+        alpha_genres = Genre.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
+        alpha_genres.each.with_index(1) do |song, index|
+          puts "#{index}. #{song.artist.name} - #{song.name}"
         end
       end
     end
+  end
 end
