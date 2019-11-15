@@ -23,5 +23,9 @@ class MusicLibraryController
       response = gets.chomp.strip
     end
 
+    def list_songs
+
+    end
+
   end
 end
