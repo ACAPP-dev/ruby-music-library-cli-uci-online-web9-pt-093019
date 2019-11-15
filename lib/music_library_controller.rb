@@ -52,6 +52,7 @@ class MusicLibraryController
         puts "Please enter the name of an artist:"
         response = gets.chomp
       end
+      Artist.find_by_name(response).songs.each.with_index(1) do | song.
 
     end
 end
