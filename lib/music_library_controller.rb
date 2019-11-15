@@ -47,14 +47,19 @@ class MusicLibraryController
     end
 
     def list_songs_by_artist
-      response = " "
-      until response != " "
+      response = nil
+      until response != nil
         puts "Please enter the name of an artist:"
         response = gets.chomp
+        if Artist.all.detect {|artist| artist.name == response}
+          alpha_songs = Artist.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
+          binding.pry
+        end
+
+
       end
-      binding.pry
-      alpha_songs = Artist.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
-      binding.pry
+
+
       #each.with_index(1) do |song, index|
 
 
