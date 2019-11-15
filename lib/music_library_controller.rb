@@ -74,8 +74,18 @@ class MusicLibraryController
   end
 
   def play_song
-    puts "Which song number would you like to play?"
-    response = gets.chomp
+    response = nil
+    until response != nil
+      puts "Which song number would you like to play?"
+      response = gets.chomp
+      if Songs.all.detect {|genre| genre.name == response}
+        alpha_genres = Genre.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
+        alpha_genres.each.with_index(1) do |song, index|
+          puts "#{index}. #{song.artist.name} - #{song.name}"
+        end
+      end
+    end
+
 
   end
 end
