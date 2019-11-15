@@ -54,7 +54,7 @@ class MusicLibraryController
         if Artist.all.detect {|artist| artist.name == response}
           alpha_songs = Artist.find_by_name(response).songs.sort {|song1, song2| song1.name <=> song2.name}
           alpha_songs.each.with_index(1) do |song, index|
-            puts "#{index}. #{song.name} - #{song.genre}"
+            puts "#{index}. #{song.name} - #{song.genre.name}"
           end
           #binding.pry
         end
