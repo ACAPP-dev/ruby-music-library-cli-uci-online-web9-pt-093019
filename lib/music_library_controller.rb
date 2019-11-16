@@ -80,8 +80,8 @@ class MusicLibraryController
       response = gets.chomp
       alpha_songs = Song.all.sort {|song1, song2| song1.name <=> song2.name}
       if response.to_i >0 && response.to_i <= alpha_songs.length
-        puts "Playing #{alpha_songs[response.to_i-1].name}"
-
+        playing_song = alpha_songs[response.to_i - 1]
+        puts "Playing #{playing_song.name} by #{playing_song.artist.name}"
       end
     end
   end
