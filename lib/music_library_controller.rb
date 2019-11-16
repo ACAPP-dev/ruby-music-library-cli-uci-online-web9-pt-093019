@@ -78,8 +78,9 @@ class MusicLibraryController
     until response != nil
       puts "Which song number would you like to play?"
       response = gets.chomp
+      binding.pry
       if Song.all.detect {|song| song.name == response}
-        binding.pry
+
       end
     end
   end
