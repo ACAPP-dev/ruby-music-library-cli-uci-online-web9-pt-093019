@@ -79,7 +79,8 @@ class MusicLibraryController
       puts "Which song number would you like to play?"
       response = gets.chomp
       binding.pry
-      if Song.all.detect {|song| song.name == response}
+        alpha_songs = Song.all.sort {|song1, song2| song1.name <=> song2.name}
+      if response_to_i
 
       end
     end
