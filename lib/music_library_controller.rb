@@ -79,7 +79,7 @@ class MusicLibraryController
       puts "Which song number would you like to play?"
       response = gets.chomp
       if Song.all.detect {|song| song.name == response}
-
+        binding.pry
       end
     end
   end
