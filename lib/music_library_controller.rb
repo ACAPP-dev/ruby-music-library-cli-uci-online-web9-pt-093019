@@ -80,7 +80,8 @@ class MusicLibraryController
       response = gets.chomp
       binding.pry
         alpha_songs = Song.all.sort {|song1, song2| song1.name <=> song2.name}
-      if response_to_i
+      if response.to_i <= alpha_songs.length
+        
 
       end
     end
